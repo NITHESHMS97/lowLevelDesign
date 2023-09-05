@@ -1,17 +1,16 @@
 package org.nithesh.repository;
 
 import java.util.HashMap;
-import org.nithesh.exceptions.DoctorNotFound;
 import org.nithesh.exceptions.PatientAlreadyRegistered;
 import org.nithesh.exceptions.PatientNotFound;
-import org.nithesh.model.Booking;
-import org.nithesh.model.Doctor;
 import org.nithesh.model.Patient;
 
 public class PatientDataRepository {
   HashMap<String, Patient> patientData;
 
-  public PatientDataRepository(){
+  private static  PatientDataRepository patientDataRepository;
+
+  private PatientDataRepository(){
     patientData = new HashMap<>();
   }
 
@@ -26,6 +25,12 @@ public class PatientDataRepository {
     if(patientData.containsKey(username))
       return patientData.get(username);
     throw new PatientNotFound();
+  }
+
+  synchronized public static PatientDataRepository  getPatientDataRepository(){
+    if(patientDataRepository == null)
+       patientDataRepository = new PatientDataRepository();
+    return patientDataRepository;
   }
 
 

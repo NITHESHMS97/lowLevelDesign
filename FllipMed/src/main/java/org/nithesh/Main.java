@@ -15,14 +15,17 @@ public class Main {
 
   public static void main(String[] args) {
     DoctorDataRepository doctorDataRepository = new DoctorDataRepository();
-    PatientDataRepository patientDataRepository = new PatientDataRepository();
     AppointmentRepository appointmentRepository = new AppointmentRepository();
     Print print = new ConsolePrint();
-    RegisterService registerService = new RegisterService(doctorDataRepository,patientDataRepository,print);
+    RegisterService registerService = new RegisterService(doctorDataRepository,print);
     BookingService bookingService = new BookingService(appointmentRepository,doctorDataRepository,print);
 
     registerService.registerDoctor("doom", Speciality.Dermatologist);
     registerService.registerPatient("boom");
+    registerService.registerPatient("zoom");
+    registerService.registerPatient("master");
+
+
 
     bookingService.addAvaialabilty("doom", new TimeSlot(LocalTime.of(9,30),LocalTime.of(10,00) ));
     bookingService.addAvaialabilty("doom", new TimeSlot(LocalTime.of(10,30),LocalTime.of(11,00) ));

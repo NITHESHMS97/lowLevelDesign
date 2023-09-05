@@ -12,9 +12,9 @@ public class RegisterService {
   DoctorDataRepository doctorDataRepository;
   PatientDataRepository patientDataRepository;
   Print print;
-  public RegisterService(DoctorDataRepository doctorDataRepository, PatientDataRepository patientDataRepository, Print print) {
+  public RegisterService(DoctorDataRepository doctorDataRepository, Print print) {
     this.doctorDataRepository =doctorDataRepository;
-    this.patientDataRepository =patientDataRepository;
+  //  this.patientDataRepository = PatientDataRepository.getPatientDataRepository();
     this.print = print;
   }
 
@@ -32,7 +32,8 @@ public class RegisterService {
 
   public void registerPatient(String username){
     try {
-      patientDataRepository.addPatient(username);
+      PatientDataRepository.getPatientDataRepository().addPatient(username);
+      PatientDataRepository.getPatientDataRepository().addPatient("hello");
     } catch (PatientAlreadyRegistered e) {
       print.printData("Patient already registered");
       return;

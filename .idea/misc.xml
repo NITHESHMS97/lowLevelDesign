@@ -5,7 +5,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/FllipMed/pom.xml" />
+        <option value="$PROJECT_DIR$/SplitWise/pom.xml" />
+        <option value="$PROJECT_DIR$/HomeAutomationSystem/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/HomeAutomationSystem/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager">
